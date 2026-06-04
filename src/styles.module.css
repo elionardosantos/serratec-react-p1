@@ -1,3 +1,16 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+html {
+  height: 100%;
+  background: #47171A;
+  background: linear-gradient(180deg,rgba(71, 23, 26, 1) 0%, rgba(5, 1, 1, 1) 100%);
+}
+
 body {
   min-height: 100vh;
   width: 100%;
@@ -41,7 +54,7 @@ body {
       display: flex;
       flex-direction: column;
 
-      .inputUsername, .inputPassword {
+      .inputDefault {
         background-color: #1B1212;
         border-color: #ffffff7f;
         border-width: 1px;
@@ -54,16 +67,29 @@ body {
         color: #ffffff;
       }
 
-      /* .inputPassword {
+      .inputError {
         background-color: #1B1212;
-        border-color: #ffffff7f;
+        border-color: red;
         border-width: 1px;
         margin: 10px 0 0 0;
         height: 46px;
         border-radius: 4px;
-      } */
+        padding: 0 0 0 12px;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #ffffff;
+      }
 
-      .inputButton {
+      .loginMessage {
+        margin: 5px 0 0 0;
+      }
+
+      .loginMessageSuccess {
+        margin: 5px 0 0 0;
+        color: green;
+      }
+
+      .formButton {
         background-color: #E50914;
         border-color: #E50914;
         border-width: 1px;
@@ -73,9 +99,12 @@ body {
         font-size: large;
         font-weight: 600;
       }
+
+      .loginInfo {
+        margin: 10px;
+        text-align: center;
+        color: gray;
+      }
     }
-
-    /* background-color: gray; */
   }
-
 }

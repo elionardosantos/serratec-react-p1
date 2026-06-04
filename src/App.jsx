@@ -3,34 +3,49 @@ import styles from './styles.module.css';
 import logoImg from '/src/assets/cloneflix-logo.png';
 
 function App() {
+
+  // Contador para acionar o useState sempre que clicar em continuar
   const [count, setCount] = useState(0);
 
-  var user = "admin";
-  var pass = "admin";
+  // Mensagem de informação sobre o status do login
+  const [loginMessage, setLoginMessage] = useState("");
+
+  // Cor da borda dos inputs
+  const [validInput, setValidInput] = useState(true);
+
+  // Cor do texto de informação de sucesso ou erro do login
+  const [loginSuccess, setLoginSuccess] = useState(false)
+
+  // Usuario e senha digitados pelo usuário
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Usuário e senha válidos para login
+  const validUser = "user";
+  const validPass = "1234";
 
   useEffect(() => {
-    var username = document.querySelector("#username");
-    var password = document.querySelector("#password");
 
     if (count == 0) {
-    } else if (username.value == "" || password.value == "") {
+      // Nada acontece na primeira execução do código
 
-      username.style.borderColor = "red";
-      password.style.borderColor = "red";
-      alert("Usuário e senha são obrigatórios");
+    } else if (username == "" || password == "") {
 
-    } else if (username.value == user && password.value == pass) {
+      setValidInput(false);
+      setLoginSuccess(false);
+      setLoginMessage("Usuário e senha são obrigatórios");
 
-      username.style.borderColor = "#ffffff7f";
-      password.style.borderColor = "#ffffff7f";
-      alert(`Login realizado com sucesso!`);
+    } else if (username == validUser && password == validPass) {
       
+      setValidInput(true);
+      setLoginSuccess(true);
+      setLoginMessage(`Usuário e email estão corretos!`);
 
     } else {
 
-      username.style.borderColor = "red";
-      password.style.borderColor = "red";
-      alert(`Usuário ou senha incorretos`);
+      setValidInput(false);
+      setLoginSuccess(false);
+      setLoginMessage(`Usuário ou senha incorretos`);
 
     }
 
@@ -52,9 +67,29 @@ function App() {
             Ou crie uma conta.
           </div>
           <div className={styles.form}>
-            <input className={styles.inputUsername} type="text" name="username" id="username" placeholder="Email" />
-            <input className={styles.inputPassword} type="password" name="password" id="password" placeholder="Senha" />
-            <input className={styles.inputButton} type="submit" value="Continuar" onClick={() => { setCount(count + 1)}}/>
+
+            <input 
+              className={ validInput?styles.inputDefault:styles.inputError }
+              onChange={ () => { setUsername(event.target.value) } }
+              type="text" placeholder="Usuário"
+            />
+
+            <input 
+              className={ validInput?styles.inputDefault:styles.inputError }
+              onChange={ () => { setPassword(event.target.value) } }
+              type="password" name="password" id="password" placeholder="Senha"
+            />
+
+            <div className={ loginSuccess?styles.loginMessageSuccess:styles.loginMessage }>
+              { loginMessage }
+            </div>
+
+            <button className={ styles.formButton } onClick={ () => { setCount(count + 1) } }>
+              Continuar
+            </button>
+
+            <div className={ styles.loginInfo }>Login: user / senha: 1234</div>
+
           </div>
         </div>
       </main>
