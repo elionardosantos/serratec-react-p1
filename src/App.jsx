@@ -4,6 +4,10 @@ import logoImg from '/src/assets/cloneflix-logo.png';
 
 function App() {
 
+  // Usuário e senha válidos para login
+  const validUser = "admin";
+  const validPass = "1234";
+
   // Contador para acionar o useState sempre que clicar em continuar
   const [count, setCount] = useState(0);
 
@@ -19,10 +23,6 @@ function App() {
   // Usuario e senha digitados pelo usuário
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // Usuário e senha válidos para login
-  const validUser = "admin";
-  const validPass = "1234";
 
   useEffect(() => {
 
