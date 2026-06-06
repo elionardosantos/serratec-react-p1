@@ -21,7 +21,7 @@ function App() {
   const [password, setPassword] = useState("");
 
   // Usuário e senha válidos para login
-  const validUser = "user";
+  const validUser = "admin";
   const validPass = "1234";
 
   useEffect(() => {
@@ -88,7 +88,7 @@ function App() {
               Continuar
             </button>
 
-            <div className={ styles.loginInfo }>Login: user / senha: 1234</div>
+            <div className={ styles.loginInfo }>Usuário: admin / senha: 1234</div>
 
           </div>
         </div>
