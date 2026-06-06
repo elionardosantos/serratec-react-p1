@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import logoImg from '/src/assets/cloneflix-logo.png';
+import { StyledInput } from './components/Input';
+import { StyledButton } from './components/Button';
+import { InfoMessage } from './components/InfoMessage';
+import { Title } from './components/Title';
 
 function App() {
 
@@ -21,34 +25,30 @@ function App() {
   const [password, setPassword] = useState("");
 
   // Usuário e senha válidos para login
-  const validUser = "user";
+  const validUser = "admin";
   const validPass = "1234";
 
   useEffect(() => {
 
-    if (count == 0) {
-      // Nada acontece na primeira execução do código
+    if (count !== 0) {
 
-    } else if (username == "" || password == "") {
+      // Se nenhum campo estiver preenchido
+      if (username == "" || password == "") {
+        setValidInput(false);
+        setLoginMessage("Usuário e senha são obrigatórios");
 
-      setValidInput(false);
-      setLoginSuccess(false);
-      setLoginMessage("Usuário e senha são obrigatórios");
+      // Se os dados estiverem corretos
+      } else if (username == validUser && password == validPass) {
+        setValidInput(true);
+        setLoginMessage(`Usuário e email estão corretos!`);
 
-    } else if (username == validUser && password == validPass) {
-      
-      setValidInput(true);
-      setLoginSuccess(true);
-      setLoginMessage(`Usuário e email estão corretos!`);
+      // Qualquer outra situação
+      } else {
+        setValidInput(false);
+        setLoginMessage(`Usuário ou senha incorretos`);
 
-    } else {
-
-      setValidInput(false);
-      setLoginSuccess(false);
-      setLoginMessage(`Usuário ou senha incorretos`);
-
+      }
     }
-
   }, [count]);
 
   return (
@@ -60,35 +60,35 @@ function App() {
       </header>
       <main>
         <div className={styles.content}>
-          <h1>
-            Informe seus dados para entrar
-          </h1>
-          <div className={styles.text}>
-            Ou crie uma conta.
-          </div>
+          <Title children={ "Informe seus dados para entrar" } />
+          <InfoMessage children={ "Ou crie uma conta" } $secondaryColor />
+
           <div className={styles.form}>
 
-            <input 
-              className={ validInput?styles.inputDefault:styles.inputError }
-              onChange={ () => { setUsername(event.target.value) } }
-              type="text" placeholder="Usuário"
+            <StyledInput
+              validInput={validInput} type={"text"}
+              placeholder={"Usuário"} value={ username }
+              onChange={ () => { setUsername(event.target.value) }} 
             />
 
-            <input 
-              className={ validInput?styles.inputDefault:styles.inputError }
-              onChange={ () => { setPassword(event.target.value) } }
-              type="password" name="password" id="password" placeholder="Senha"
+            <StyledInput
+              validInput={validInput} type={"password"}
+              placeholder={"Senha"} value={ password }
+              onChange={ () => { setPassword(event.target.value) }}
             />
 
-            <div className={ loginSuccess?styles.loginMessageSuccess:styles.loginMessage }>
-              { loginMessage }
-            </div>
+            <InfoMessage
+              children={ loginMessage }
+            />
+            
+            <StyledButton
+              children={ "Continuar" } onClick={() => { setCount(count + 1)}}
+            />
 
-            <button className={ styles.formButton } onClick={ () => { setCount(count + 1) } }>
-              Continuar
-            </button>
-
-            <div className={ styles.loginInfo }>Login: user / senha: 1234</div>
+            <InfoMessage
+              $secondaryColor $textCenter
+              children={ "Login: admin / senha: 1234" }
+            />
 
           </div>
         </div>

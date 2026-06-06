@@ -89,17 +89,6 @@ body {
         color: green;
       }
 
-      .formButton {
-        background-color: #E50914;
-        border-color: #E50914;
-        border-width: 1px;
-        margin: 10px 0 0 0;
-        height: 46px;
-        border-radius: 4px;
-        font-size: large;
-        font-weight: 600;
-      }
-
       .loginInfo {
         margin: 10px;
         text-align: center;
