@@ -89,6 +89,7 @@ function App() {
             </button>
 
             <div className={ styles.loginInfo }>Usuário: admin / senha: 1234</div>
+            <div className={ styles.loginInfo }>Dados digitados: { username } - { password }</div>
 
           </div>
         </div>
