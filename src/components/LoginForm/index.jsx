@@ -63,15 +63,18 @@ export const LoginForm = () => {
                 validInput={validInput} type={"text"}
                 placeholder={"Usuário"} value={ username }
                 onChange={ () => { setUsername(event.target.value) }} 
+                id={"username"}
             />
 
             <StyledInput
                 validInput={validInput} type={"password"}
                 placeholder={"Senha"} value={ password }
                 onChange={ () => { setPassword(event.target.value) }}
+                id={"password"}
             />
 
             <InfoMessage
+                $successColor={loginSuccess}
                 children={ loginMessage }
             />
             

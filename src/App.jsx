@@ -5,7 +5,6 @@ import { StyledInput } from './components/Input';
 import { StyledButton } from './components/Button';
 import { InfoMessage } from './components/InfoMessage';
 import { Title } from './components/Title';
-import { LoginForm } from './components/LoginForm';
 
 function App() {
 
@@ -52,56 +51,50 @@ function App() {
     }
   }, [count]);
 
-  // return (
-  //   <>
-
-      
-  //     <header>
-  //       <div className={styles.header}>
-  //         <img src={logoImg} alt="Cloneflix Logo" />
-  //       </div>
-  //     </header>
-  //     <main>
-  //       <div className={styles.content}>
-  //         <Title children={ "Informe seus dados para entrar" } />
-  //         <InfoMessage children={ "Ou crie uma conta" } $secondaryColor />
-
-  //         <div className={styles.form}>
-
-  //           <StyledInput
-  //             validInput={validInput} type={"text"}
-  //             placeholder={"Usuário"} value={ username }
-  //             onChange={ () => { setUsername(event.target.value) }} 
-  //           />
-
-  //           <StyledInput
-  //             validInput={validInput} type={"password"}
-  //             placeholder={"Senha"} value={ password }
-  //             onChange={ () => { setPassword(event.target.value) }}
-  //           />
-
-  //           <InfoMessage
-  //             children={ loginMessage }
-  //           />
-            
-  //           <StyledButton
-  //             children={ "Continuar" } onClick={() => { setCount(count + 1)}}
-  //           />
-
-  //           <InfoMessage
-  //             $secondaryColor $textCenter
-  //             children={ "Login: admin / senha: 1234" }
-  //           />
-
-  //         </div>
-  //       </div>
-  //     </main>
-  //   </>
-  // )
-
   return (
     <>
-      <LoginForm></LoginForm>
+
+      
+      <header>
+        <div className={styles.header}>
+          <img src={logoImg} alt="Cloneflix Logo" />
+        </div>
+      </header>
+      <main>
+        <div className={styles.content}>
+          <Title children={ "Informe seus dados para entrar" } />
+          <InfoMessage children={ "Ou crie uma conta" } $secondaryColor />
+
+          <div className={styles.form}>
+
+            <StyledInput
+              validInput={validInput} type={"text"}
+              placeholder={"Usuário"} value={ username }
+              onChange={ () => { setUsername(event.target.value) }} 
+            />
+
+            <StyledInput
+              validInput={validInput} type={"password"}
+              placeholder={"Senha"} value={ password }
+              onChange={ () => { setPassword(event.target.value) }}
+            />
+
+            <InfoMessage
+              children={ loginMessage }
+            />
+            
+            <StyledButton
+              children={ "Continuar" } onClick={() => { setCount(count + 1)}}
+            />
+
+            <InfoMessage
+              $secondaryColor $textCenter
+              children={ "Login: admin / senha: 1234" }
+            />
+
+          </div>
+        </div>
+      </main>
     </>
   )
 }

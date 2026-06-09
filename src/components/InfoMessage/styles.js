@@ -7,6 +7,10 @@ export const InfoMessageDefault = styled.div`
         color: white;
     `}
 
+    ${props => props.$successColor && `
+        color: green;
+    `}
+
     ${props => props.$secondaryColor && `
         color: #ffffff7f;
     `}
